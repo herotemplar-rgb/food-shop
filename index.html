@@ -1,16 +1,18 @@
-<script>
-    async function sendOrder() {
-        const data = {
-            dish: document.getElementById('dish').value,
-            addr: document.getElementById('addr').value,
-            phone: document.getElementById('phone').value
-        };
-        // Bạn không cần dán token vào đây nữa
-        // Chúng ta sẽ gọi qua địa chỉ an toàn của VPS
-        await fetch("http://82.165.78.110:8000/order", {
-            method: "POST",
-            body: JSON.stringify(data)
-        });
-        alert("Đã gửi đơn!");
-    }
-</script>
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Đặt Đồ Ăn</title></head>
+<body>
+    <h1>Kia Sportage Special Menu</h1>
+    <button onclick="sendOrder('Sportage Burger', '15.00')">Đặt Sportage Burger (15.00€)</button>
+    <script>
+        async function sendOrder(dish, price) {
+            // Thay vì Token ở đây, ta gửi về server trung gian
+            await fetch("http://82.165.78.110:8000/order", {
+                method: "POST",
+                body: JSON.stringify({ dish: dish, price: price })
+            });
+            alert("Đơn đã gửi!");
+        }
+    </script>
+</body>
+</html>
