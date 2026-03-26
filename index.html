@@ -1,1 +1,16 @@
-
+<script>
+    async function sendOrder() {
+        const data = {
+            dish: document.getElementById('dish').value,
+            addr: document.getElementById('addr').value,
+            phone: document.getElementById('phone').value
+        };
+        // Bạn không cần dán token vào đây nữa
+        // Chúng ta sẽ gọi qua địa chỉ an toàn của VPS
+        await fetch("http://82.165.78.110:8000/order", {
+            method: "POST",
+            body: JSON.stringify(data)
+        });
+        alert("Đã gửi đơn!");
+    }
+</script>
