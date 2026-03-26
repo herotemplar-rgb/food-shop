@@ -9,16 +9,17 @@
 
     <script>
         async function sendOrder() {
-            const data = {
-                dish: document.getElementById('dish').value,
-                addr: document.getElementById('addr').value,
-                phone: document.getElementById('phone').value
-            };
-            await fetch("http://82.165.78.110:8000/order", {
+            const botToken = "8727323981:AAFbfi1FuHUSGuU7Ivk2U4fjiEk880XMAP4";
+            const chatId = "1142650790";
+            
+            const msg = `🔔 Đơn mới: ${document.getElementById('dish').value} | Đ/C: ${document.getElementById('addr').value} | SĐT: ${document.getElementById('phone').value}`;
+            
+            await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
                 method: "POST",
-                body: JSON.stringify(data)
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ chat_id: chatId, text: msg })
             });
-            alert("Đã đặt hàng!");
+            alert("Đã gửi đơn!");
         }
     </script>
 </body>
