@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>Đặt Đồ Ăn</h1>
+    <input id="dish" placeholder="Tên món"><br>
+    <input id="addr" placeholder="Địa chỉ"><br>
+    <input id="phone" placeholder="Số điện thoại"><br>
+    <button onclick="sendOrder()">Đặt Ngay</button>
+
+    <script>
+        async function sendOrder() {
+            const data = {
+                dish: document.getElementById('dish').value,
+                addr: document.getElementById('addr').value,
+                phone: document.getElementById('phone').value
+            };
+            await fetch("http://82.165.78.110:8000/order", {
+                method: "POST",
+                body: JSON.stringify(data)
+            });
+            alert("Đã đặt hàng!");
+        }
+    </script>
+</body>
+</html>
