@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>Đặt Đồ Ăn</h1>
+    <input id="dish" placeholder="Tên món"><br>
+    <input id="addr" placeholder="Địa chỉ"><br>
+    <input id="phone" placeholder="Số điện thoại"><br>
+    <button onclick="sendOrder()">Đặt Ngay</button>
+
+    <script>
+        function sendOrder() {
+            let msg = `🔔 Đơn mới: ${document.getElementById('dish').value} | Đ/C: ${document.getElementById('addr').value} | SĐT: ${document.getElementById('phone').value}`;
+            fetch("https://api.telegram.org/bot8727323981:AAFbfi1FuHUSGuU7Ivk2U4fjiEk880XMAP4/sendMessage?chat_id=1142650790&text=" + encodeURIComponent(msg));
+            alert("Đã gửi đơn!");
+        }
+    </script>
+</body>
+</html>
