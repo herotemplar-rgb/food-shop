@@ -1,17 +1,26 @@
 <!DOCTYPE html>
 <html>
-<head><meta charset="UTF-8"><title>Đặt Đồ Ăn</title></head>
 <body>
-    <h1>Kia Sportage Special Menu</h1>
-    <button onclick="sendOrder('Sportage Burger', '15.00')">Đặt Sportage Burger (15.00€)</button>
+    <h1>Đặt Đồ Ăn Online</h1>
+    <input id="dish" placeholder="Tên món"><br>
+    <input id="addr" placeholder="Địa chỉ"><br>
+    <input id="phone" placeholder="Số điện thoại"><br>
+    <button onclick="sendOrder()">Đặt Ngay</button>
+
     <script>
-        async function sendOrder(dish, price) {
-            // Thay vì Token ở đây, ta gửi về server trung gian
-            await fetch("http://82.165.78.110:8000/order", {
+        async function sendOrder() {
+            const data = {
+                dish: document.getElementById('dish').value,
+                addr: document.getElementById('addr').value,
+                phone: document.getElementById('phone').value
+            };
+            const proxyUrl = "https://script.google.com/macros/s/AKfycbz_uO2_WJ9eXh3X25r3Pz1y9M5a3xVp6B_cK2zD1s8H8v0r1_Xn3jG0uT9vM6Qv6P5w/exec";
+            
+            await fetch(proxyUrl, {
                 method: "POST",
-                body: JSON.stringify({ dish: dish, price: price })
+                body: JSON.stringify(data)
             });
-            alert("Đơn đã gửi!");
+            alert("Đơn hàng đã được gửi!");
         }
     </script>
 </body>
