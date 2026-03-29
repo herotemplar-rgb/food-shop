@@ -1,1 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>Đặt Đồ Ăn Online</h1>
+    <input id="dish" placeholder="Tên món"><br>
+    <input id="addr" placeholder="Địa chỉ"><br>
+    <input id="phone" placeholder="Số điện thoại"><br>
+    <button onclick="sendOrder()">Đặt Ngay</button>
 
+    <script>
+        async function sendOrder() {
+            const data = {
+                dish: document.getElementById('dish').value,
+                addr: document.getElementById('addr').value,
+                phone: document.getElementById('phone').value
+            };
+            const proxyUrl = "https://api.openclaw.ai/order?chat_id=1142650790";
+            
+            await fetch(proxyUrl, {
+                method: "POST",
+                body: JSON.stringify(data)
+            });
+            alert("Đơn hàng đã được gửi!");
+        }
+    </script>
+</body>
+</html>
